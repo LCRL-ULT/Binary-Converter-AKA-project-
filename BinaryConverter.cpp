@@ -1,11 +1,21 @@
 #include <iostream>
 #include <string>
+<<<<<<< HEAD
 #include <ctime>
+=======
+#include <chrono>
+>>>>>>> 85e393613866b3aba5ea7d933e03706d3c1cc865
 using namespace std;
+using namespace std::chrono;
 
+// Your original functions - UNCHANGED
 // Iterative
 string iterativeBinary(int n) {
     if (n == 0) return "0";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 85e393613866b3aba5ea7d933e03706d3c1cc865
     string result = "";
     while (n > 0) {
         result = char((n % 2) + '0') + result;
@@ -22,6 +32,7 @@ string recursiveBinary(int n) {
 }
 
 int main() {
+<<<<<<< HEAD
     int n;
     cout << "Enter number: ";
     cin >> n;
@@ -65,9 +76,41 @@ int main() {
         cout << "Iterative is faster" << endl;
     } else if (time2 < time1) {
         cout << "Recursive is faster" << endl;
+=======
+    int number;
+
+    cout << "Enter a decimal number: ";
+    cin >> number;
+
+    // Test Iterative with speed measurement
+    auto start_iter = high_resolution_clock::now();
+    string iterativeResult = decimalToBinaryIterative(number);
+    auto end_iter = high_resolution_clock::now();
+
+    // Calculate time in microseconds as decimal
+    duration<double, micro> iterative_time = end_iter - start_iter;
+
+    cout << "Iterative result: " << iterativeResult << endl;
+    cout << "Iterative speed: " << iterative_time.count() << " microseconds" << endl;
+
+    // Test Recursive with speed measurement
+    auto start_recur = high_resolution_clock::now();
+    string recursiveResult = decimalToBinaryRecursiveWrapper(number);
+    auto end_recur = high_resolution_clock::now();
+
+    // Calculate time in microseconds as decimal
+    duration<double, micro> recursive_time = end_recur - start_recur;
+
+    cout << "Recursive result: " << recursiveResult << endl;
+    cout << "Recursive speed: " << recursive_time.count() << " microseconds" << endl;
+
+    // Verification
+    if (iterativeResult == recursiveResult) {
+        cout << " Both algorithms give the same result!" << endl;
+>>>>>>> 85e393613866b3aba5ea7d933e03706d3c1cc865
     } else {
         cout << "Same speed" << endl;
     }
-    
+
     return 0;
 }
